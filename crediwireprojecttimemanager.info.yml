@@ -1,0 +1,5 @@
+name: 'CrediWire Project Time Manager'
+type: module
+description: 'CrediWire Developer assignment'
+core: 8.x
+package: 'CrediWire'

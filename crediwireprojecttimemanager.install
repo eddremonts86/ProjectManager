@@ -1,0 +1,128 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the database_test module.
+ */
+
+/**
+ * Implements hook_schema().
+ *
+ * The database tests use the database API which depends on schema
+ * information for certain operations on certain databases.
+ * Therefore, the schema must actually be declared in a normal module
+ * like any other, not directly in the test file.
+ */
+
+function crediwireprojecttimemanager_schema()
+{
+  drupal_set_message('Install DB crediwireprojecttimemanager');
+  $schema['crediwire_project_list'] = [
+    'description' => 'Crediwire Projects list',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'project_name' => [
+        'description' => "Project Name",
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'binary' => TRUE,
+      ],
+      'project_total_hours' => [
+        'description' => "Total hours by project",
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'binary' => TRUE,
+      ],
+      'project_state' => [
+        'description' => "Projectcactual state ",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 1,
+      ],
+      'active' => [
+        'description' => "",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 1,
+      ],
+    ],
+    'primary key' => ['id'],
+    'unique keys' => [
+        'id'=>['id'],
+        'project_name' => ['project_name'],
+      ]
+  ];
+  $schema['crediwire_project_time_log'] = [
+    'description' => 'Time log by project.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'id_project' => [
+        'description' => "Project key",
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'binary' => TRUE,
+      ],
+      'date' => [
+        'description' => "Date ",
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'binary' => TRUE,
+      ],
+      'start_hour' => [
+        'description' => "Start Hour",
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'binary' => TRUE,
+      ],
+      'end_hour' => [
+        'description' => "End Hour",
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'binary' => TRUE,
+      ],
+      'hours' => [
+        'description' => "Hours",
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'binary' => TRUE,
+      ],
+      'active' => [
+        'description' => "",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 1,
+      ],
+    ],
+    'primary key' => ['id'],
+    'unique keys' => [
+      'id' => ['id']
+    ]
+  ];
+  return $schema;
+}
+?>
+

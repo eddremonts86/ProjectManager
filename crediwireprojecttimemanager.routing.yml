@@ -1,0 +1,32 @@
+
+crediwireprojecttimemanager.project_manager:
+  path: '/admin/crediwire/project_manager'
+  defaults:
+    _form: '\Drupal\crediwireprojecttimemanager\Form\projectManager'
+    _title: 'projectManager'
+  requirements:
+    _access: 'TRUE'
+  
+
+crediwireprojecttimemanager.project_manager_editor:
+  path: '/admin/crediwire/project_manager/projectLogs/{id}'
+  defaults:
+    _form: '\Drupal\crediwireprojecttimemanager\Form\projectManagerEditor'
+    _title: 'projectManagerEditor'
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
+
+crediwireprojecttimemanager.createlog:
+  path: '/admin/crediwire/project_manager/createlog/{id}'
+  defaults: { _controller: 'Drupal\crediwireprojecttimemanager\Controller\projectsController::createlog' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
+
+crediwireprojecttimemanager.closelogs:
+  path: '/admin/crediwire/project_manager/closelogs/{id}'
+  defaults: { _controller: 'Drupal\crediwireprojecttimemanager\Controller\projectsController::closelogs' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
