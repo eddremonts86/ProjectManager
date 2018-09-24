@@ -23,20 +23,14 @@ class projectsController extends ControllerBase {
     $data = array();
     if ($results) {
       foreach ($results as $result) {
-        if($result->project_state == 0 ){
-          $Text = 'Start Time Log';
-          $action = 'createlog';
-        }else{
-          $Text = 'End Time Log ';
-          $action = 'closelogs';
-
-        }
+        if($result->project_state == 0 ){$Text = 'Start Time Log';$action = 'createlog';}
+        else{$Text = 'End Time Log ';$action = 'closelogs';}
         $data[] = array(
           'project_name' => ['#markup' => $this->t($result->project_name)],
           'project_total_hours' => round($result->project_total_hours,3).' hours',
           'project_state' =>  ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/'.$action.'/'.$result->id.'" class="btn btn-'.$action.'">'.$Text.'</a>')],
-          'logs' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/projectLogs/'. $result->id.'" class="btn btn-link">Se Logs</a>')],
-          'action_pre' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/action/'. $result->id.'/0" class="btn btn-closelogs">Desable</a>')]
+          'logs' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/projectLogs/'.$result->id.'" class="btn btn-link">Se Logs</a>')],
+          'action_pre' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/action/'.$result->id.'/0" class="btn btn-closelogs">Desable</a>')]
         );
       }
     }
@@ -48,19 +42,13 @@ class projectsController extends ControllerBase {
     $data = array();
     if ($results) {
       foreach ($results as $result) {
-        if($result->project_state == 0 ){
-          $Text = 'Start Time Log';
-          $action = 'createlog';
-        }else{
-          $Text = 'End Time Log ';
-          $action = 'closelogs';
-
-        }
+        if($result->project_state == 0 ){$Text = 'Start Time Log';$action = 'createlog';}
+        else{$Text = 'End Time Log ';$action = 'closelogs';}
         $data[] = array(
           'project_name' => ['#markup' => $this->t($result->project_name)],
           'project_total_hours' => round($result->project_total_hours,3).' hours',
-          'logs' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/projectLogs/'. $result->id.'" class="btn btn-link">Se Logs</a>')],
-          'action_pre' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/action/'. $result->id.'/1" class="btn btn-createlog">Enable</a>')],
+          'logs' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/projectLogs/'.$result->id.'" class="btn btn-link">Se Logs</a>')],
+          'action_pre' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/action/'.$result->id.'/1" class="btn btn-createlog">Enable</a>')],
           'action_delete' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/delete/'. $result->id.'" class="btn btn-delete">Delete</a>')]
         );
       }
@@ -242,7 +230,6 @@ class projectsController extends ControllerBase {
 
   }
 
-
   public function deleteProject(Request $request){
     $id = $request->attributes->get('id');
     $condition= array(array('field'=>'id','data'=>$id,'operator'=>'='));
@@ -254,9 +241,6 @@ class projectsController extends ControllerBase {
     return $url;
 
   }
-
-
-
 
   public function totalhours($start,$end){
     $fecha1 = date_create_from_format("Y-m-d H:i:s",$start);
