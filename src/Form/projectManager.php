@@ -64,7 +64,6 @@ class projectManager extends FormBase {
       '#header' => [
         'project_name' => t('Project Name'),
         'project_total_hours' => t('Total Hours'),
-        'project_state' => t('State'),
         'logs' =>t('Se Logs'),
         'action_pre' => t('Enable Projects')
       ],

@@ -59,7 +59,6 @@ class projectsController extends ControllerBase {
         $data[] = array(
           'project_name' => ['#markup' => $this->t($result->project_name)],
           'project_total_hours' => round($result->project_total_hours,3).' hours',
-          'project_state' =>  ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/'.$action.'/'.$result->id.'" class="btn btn-'.$action.'">'.$Text.'</a>')],
           'logs' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/projectLogs/'. $result->id.'" class="btn btn-link">Se Logs</a>')],
           'action_pre' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/action/'. $result->id.'/1" class="btn btn-createlog">Enable</a>')]
         );
