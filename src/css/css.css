@@ -1,0 +1,55 @@
+body.ft-profile-beeblebrox #tableid a,
+body #edit-table > div > a{
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  border: 0;
+  border-radius: 60px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Poppins", Helvetica, Arial;
+  font-weight: 500;
+  line-height: 1.71429em;
+  padding: 0.57143em 2.14286em 0.57143em 2.14286em;
+  text-decoration: none;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  vertical-align: baseline;
+}
+
+body.ft-profile-beeblebrox #tableid a.btn-createlog {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+body.ft-profile-beeblebrox #tableid a.btn-closelogs {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+body.ft-profile-beeblebrox #tableid a.btn-logs,
+body #edit-table > div > a.btn-logs {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+#tableid{
+  margin-bottom: 15px;
+}

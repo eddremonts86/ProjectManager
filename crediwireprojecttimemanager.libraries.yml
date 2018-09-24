@@ -1,0 +1,5 @@
+crediwireprojecttimemanager_css:
+  version: 1.x
+  css:
+    theme:
+      src/css/css.css: {}

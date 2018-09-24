@@ -5,13 +5,33 @@
  * Date: 9/23/18
  * Time: 11:29 AM
  */
-namespace Drupal\crediwireprojecttimemanager\Models;
-use Drupal\Core\Controller\ControllerBase;
+namespace Drupal\crediwireprojecttimemanager\Controller;
+
 class projectManagerModel  {
 
+  /*
+   * Class to make all the interactions between  System and DataBase
+   *
+   *Parameters
+   * $tableName - Table name to make the query
+   *
+   *   $conditions - Expecting an array with all the paramameters for the query.
+   *     Array elements
+   *       - "field" : Database fields
+   *       - "data" : Data content
+   *       - "operation" : operation (= ,<=, >,...)
+   *
+   *   $selection - Array with table keys
+   *
+   *   $fields - Array with table keys and value to update
+   *
+   *   $data - Array with table keys and value to update
+   *
+   * */
 
 
-  public function selectEntyti($table,$conditions,$selection){
+
+  public function selectEntity($table,$conditions,$selection){
     $database = \Drupal::database();
     $result = $database->select($table, 'x');
     $result->fields('x', $selection);
@@ -22,13 +42,13 @@ class projectManagerModel  {
     return $exit;
   }
 
-  public function insertEntyti($table,$data){
+  public function insertEntity($table,$data){
     $database = \Drupal::database();
     $database->insert($table)->fields($data)->execute();
     return true;
   }
 
-  public function updateEntyti($table,$conditions,$fields){
+  public function updateEntity($table,$conditions,$fields){
     $database = \Drupal::database();
     $result = $database->update($table);
     $result->fields($fields);
@@ -38,6 +58,5 @@ class projectManagerModel  {
     $result ->execute();
     return true;
   }
-
 
 }

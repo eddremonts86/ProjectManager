@@ -33,3 +33,19 @@ function crediwireprojecttimemanager_theme() {
     ],
   ];
 }
+
+
+function crediwireprojecttimemanager_page_attachments(array &$page)
+{
+     $page['#attached']['library'][] = 'crediwireprojecttimemanager/crediwireprojecttimemanager_css';
+}
+
+
+function crediwireprojecttimemanager_install(){
+  $item = \Drupal\menu_link_content\Entity\MenuLinkContent::create([
+    'link' => ['uri' => 'internal:/admin/crediwire/project_manager'],
+    'title' => 'Project Manager',
+    'menu_name' => 'admin',
+  ]);
+  $item->save();
+}

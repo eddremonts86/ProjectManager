@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: edd
+ * Date: 9/23/18
+ * Time: 11:29 AM
+ */
 namespace Drupal\crediwireprojecttimemanager\Form;
 
 use Drupal\Core\Form\FormBase;
@@ -40,7 +45,8 @@ class projectManager extends FormBase {
         'project_name' => t('Project Name'),
         'project_total_hours' => t('Total Hours'),
         'project_state' => t('State'),
-        'logs' => t('Se Logs'),
+        'logs' =>t('Se Logs'),
+        'action_pre' => t('Disable Projects')
       ],
       '#options' => $project->renderprojectsTable(),
       '#open' => TRUE,
@@ -48,16 +54,35 @@ class projectManager extends FormBase {
       '#attributes' => ['id' => 'tableid']
     ];
 
+    $form['history'] = array(
+      '#type' => 'details',
+      '#title' => $this->t('History Projects List'),
+      '#group' => 'information',
+    );
+    $form['history']['history_table'] = [
+      '#type' => 'tableselect',
+      '#header' => [
+        'project_name' => t('Project Name'),
+        'project_total_hours' => t('Total Hours'),
+        'project_state' => t('State'),
+        'logs' =>t('Se Logs'),
+        'action_pre' => t('Enable Projects')
+      ],
+      '#options' => $project->renderhistoryprojectsTable(),
+      '#open' => TRUE,
+      '#empty' => t('No projects found'),
+      '#attributes' => ['id' => 'tableid']
+    ];
 
     $form['project'] = array(
       '#type' => 'details',
-      '#title' => $this->t('Add New Projects'),
+      '#title' => $this->t('Create Projects'),
       '#group' => 'information',
     );
     $form['project']['form'] = [
       '#type' => 'fieldset',
       '#title' => $this
-        ->t('Add New Projects'),
+        ->t('Add New Project'),
     ];
     $form['project']['form']['project_name'] = [
       '#type' => 'textfield',
@@ -71,9 +96,6 @@ class projectManager extends FormBase {
       '#type' => 'submit',
       '#value' => $this->t('Submit'),
     ];
-
-
-
 
     return $form;
   }

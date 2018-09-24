@@ -1,0 +1,5 @@
+system.admin:
+  title: Project Manager
+  route_name: crediwireprojecttimemanager.project_manager
+  weight: 15
+  menu_name: admin

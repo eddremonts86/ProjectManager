@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: edd
+ * Date: 9/23/18
+ * Time: 11:29 AM
+ */
 namespace Drupal\crediwireprojecttimemanager\Form;
 
 use Drupal\Core\Form\FormBase;
@@ -44,9 +49,9 @@ class projectManagerEditor extends FormBase {
     '#empty' => t('No projects found'),
     '#attributes' => ['id' => 'tableid']
   ];
-    $form['submit'] = [
+    $form['table']['submit'] = [
       '#type' => 'imput',
-      '#markup' => $this->t('<a href="/admin/crediwire/project_manager">Go back</a>')
+      '#markup' => $this->t('<a href="/admin/crediwire/project_manager" class="btn-logs">Go back</a>')
     ];
     return $form;
   }
