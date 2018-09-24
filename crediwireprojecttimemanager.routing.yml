@@ -37,3 +37,9 @@ crediwireprojecttimemanager.managerproject:
   methods:  [GET]
   requirements:
     _access: 'TRUE'
+crediwireprojecttimemanager.deleteproject:
+  path: '/admin/crediwire/project_manager/delete/{id}'
+  defaults: { _controller: 'Drupal\crediwireprojecttimemanager\Controller\projectsController::deleteProject' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'

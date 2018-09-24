@@ -39,6 +39,12 @@ body.ft-profile-beeblebrox #tableid a.btn-createlog {
 
 body.ft-profile-beeblebrox #tableid a.btn-closelogs {
   color: #fff;
+  background-color: #d9a03d;
+  border-color: #d4a901;
+}
+
+body.ft-profile-beeblebrox #tableid a.btn-delete {
+  color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;
 }

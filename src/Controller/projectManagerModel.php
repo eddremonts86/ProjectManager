@@ -59,4 +59,13 @@ class projectManagerModel  {
     return true;
   }
 
+  public function deleteEntity($table,$conditions) {
+    $database = \Drupal::database();
+    $result = $database->delete($table);
+    foreach ($conditions as $condition){
+      $result->condition($condition["field"], $condition["data"], $condition["operator"]);
+    }
+    $result ->execute();
+    return true;
+  }
 }

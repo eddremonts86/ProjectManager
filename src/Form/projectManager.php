@@ -65,7 +65,8 @@ class projectManager extends FormBase {
         'project_name' => t('Project Name'),
         'project_total_hours' => t('Total Hours'),
         'logs' =>t('Se Logs'),
-        'action_pre' => t('Enable Projects')
+        'action_pre' => t('Enable Projects'),
+        'action_delete' => t('Delete Projects')
       ],
       '#options' => $project->renderhistoryprojectsTable(),
       '#open' => TRUE,

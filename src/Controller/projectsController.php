@@ -60,7 +60,8 @@ class projectsController extends ControllerBase {
           'project_name' => ['#markup' => $this->t($result->project_name)],
           'project_total_hours' => round($result->project_total_hours,3).' hours',
           'logs' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/projectLogs/'. $result->id.'" class="btn btn-link">Se Logs</a>')],
-          'action_pre' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/action/'. $result->id.'/1" class="btn btn-createlog">Enable</a>')]
+          'action_pre' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/action/'. $result->id.'/1" class="btn btn-createlog">Enable</a>')],
+          'action_delete' => ['#markup' => $this->t('<a href="/admin/crediwire/project_manager/delete/'. $result->id.'" class="btn btn-delete">Delete</a>')]
         );
       }
     }
@@ -240,6 +241,22 @@ class projectsController extends ControllerBase {
     else{ drupal_set_message('We found some issues, please contact your system administrator');}
 
   }
+
+
+  public function deleteProject(Request $request){
+    $id = $request->attributes->get('id');
+    $condition= array(array('field'=>'id','data'=>$id,'operator'=>'='));
+    $condition_= array(array('field'=>'id_project','data'=>$id,'operator'=>'='));
+    $managerModel = new projectManagerModel();
+    $managerModel->deleteEntity('crediwire_project_list',$condition);
+    $managerModel->deleteEntity('crediwire_project_time_log',$condition_);
+    $url = new RedirectResponse('/admin/crediwire/project_manager');
+    return $url;
+
+  }
+
+
+
 
   public function totalhours($start,$end){
     $fecha1 = date_create_from_format("Y-m-d H:i:s",$start);
