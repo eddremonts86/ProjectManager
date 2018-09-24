@@ -27,6 +27,4 @@
 ###Note 
 
     When you have finished the installation (Drupal 8 + module). 
-    Please go to (http://[your_system_url]/admin/crediwire/project_manager). 
-    
-    To a better visualitation install FortyTwo - Administration Theme 
+    Please go to (http://[your_system_url]/admin/crediwire/project_manager).    
