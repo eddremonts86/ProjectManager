@@ -5,6 +5,7 @@
  * Date: 9/23/18
  * Time: 11:29 AM
  */
+
 namespace Drupal\crediwireprojecttimemanager\Form;
 
 use Drupal\Core\Form\FormBase;
@@ -29,56 +30,56 @@ class projectManager extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $project = new  projectsController();
-    $form['information'] = array(
+    $form['information'] = [
       '#type' => 'vertical_tabs',
       '#default_tab' => 'table',
-    );
+    ];
 
-    $form['table'] = array(
+    $form['table'] = [
       '#type' => 'details',
       '#title' => $this->t('Projects List'),
       '#group' => 'information',
-    );
+    ];
     $form['table']['table'] = [
       '#type' => 'tableselect',
       '#header' => [
         'project_name' => t('Project Name'),
         'project_total_hours' => t('Total Hours'),
         'project_state' => t('State'),
-        'logs' =>t('Se Logs'),
-        'action_pre' => t('Disable Projects')
+        'logs' => t('Se Logs'),
+        'action_pre' => t('Disable Projects'),
       ],
       '#options' => $project->renderprojectsTable(),
       '#open' => TRUE,
       '#empty' => t('No projects found'),
-      '#attributes' => ['id' => 'tableid']
+      '#attributes' => ['id' => 'tableid'],
     ];
 
-    $form['history'] = array(
+    $form['history'] = [
       '#type' => 'details',
       '#title' => $this->t('History Projects List'),
       '#group' => 'information',
-    );
+    ];
     $form['history']['history_table'] = [
       '#type' => 'tableselect',
       '#header' => [
         'project_name' => t('Project Name'),
         'project_total_hours' => t('Total Hours'),
-        'logs' =>t('Se Logs'),
+        'logs' => t('Se Logs'),
         'action_pre' => t('Enable Projects'),
-        'action_delete' => t('Delete Projects')
+        'action_delete' => t('Delete Projects'),
       ],
       '#options' => $project->renderhistoryprojectsTable(),
       '#open' => TRUE,
       '#empty' => t('No projects found'),
-      '#attributes' => ['id' => 'tableid']
+      '#attributes' => ['id' => 'tableid'],
     ];
 
-    $form['project'] = array(
+    $form['project'] = [
       '#type' => 'details',
       '#title' => $this->t('Create Projects'),
       '#group' => 'information',
-    );
+    ];
     $form['project']['form'] = [
       '#type' => 'fieldset',
       '#title' => $this
@@ -111,10 +112,10 @@ class projectManager extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $onlyUse =array('project_name');
+    $onlyUse = ['project_name'];
     echo "<pre>";
     foreach ($form_state->getValues() as $key => $value) {
-      if(in_array($key,$onlyUse) and $value != ''){
+      if (in_array($key, $onlyUse) and $value != '') {
         $project = new  projectsController();
         $project->insertProject($value);
       }

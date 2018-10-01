@@ -5,9 +5,10 @@
  * Date: 9/23/18
  * Time: 11:29 AM
  */
+
 namespace Drupal\crediwireprojecttimemanager\Controller;
 
-class projectManagerModel  {
+class projectManagerModel {
 
   /*
    * Class to make all the interactions between  System and DataBase
@@ -30,42 +31,41 @@ class projectManagerModel  {
    * */
 
 
-
-  public function selectEntity($table,$conditions,$selection){
+  public function selectEntity($table, $conditions, $selection) {
     $database = \Drupal::database();
     $result = $database->select($table, 'x');
     $result->fields('x', $selection);
-    foreach ($conditions as $condition){
-      $result->condition('x.'.$condition["field"], $condition["data"], $condition["operator"]);
+    foreach ($conditions as $condition) {
+      $result->condition('x.' . $condition["field"], $condition["data"], $condition["operator"]);
     }
     $exit = $result->execute()->fetchAll();
     return $exit;
   }
 
-  public function insertEntity($table,$data){
+  public function insertEntity($table, $data) {
     $database = \Drupal::database();
     $database->insert($table)->fields($data)->execute();
-    return true;
+    return TRUE;
   }
 
-  public function updateEntity($table,$conditions,$fields){
+  public function updateEntity($table, $conditions, $fields) {
     $database = \Drupal::database();
     $result = $database->update($table);
     $result->fields($fields);
-    foreach ($conditions as $condition){
-      $result->condition($condition["field"], $condition["data"], $condition["operator"]);
-      }
-    $result ->execute();
-    return true;
-  }
-
-  public function deleteEntity($table,$conditions) {
-    $database = \Drupal::database();
-    $result = $database->delete($table);
-    foreach ($conditions as $condition){
+    foreach ($conditions as $condition) {
       $result->condition($condition["field"], $condition["data"], $condition["operator"]);
     }
-    $result ->execute();
-    return true;
+    $result->execute();
+    return TRUE;
+  }
+
+  public function deleteEntity($table, $conditions) {
+    $database = \Drupal::database();
+    $result = $database->delete($table);
+    foreach ($conditions as $condition) {
+      $result->condition($condition["field"], $condition["data"], $condition["operator"]);
+    }
+    $result->execute();
+    return TRUE;
   }
 }
