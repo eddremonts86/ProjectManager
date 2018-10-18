@@ -30,7 +30,6 @@ class projectManagerModel {
    *
    * */
 
-
   public function selectEntity($table, $conditions, $selection) {
     $database = \Drupal::database();
     $result = $database->select($table, 'x');
